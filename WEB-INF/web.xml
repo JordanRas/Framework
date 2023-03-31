@@ -7,12 +7,12 @@
 
     <servlet>
         <servlet-name>FrontServlet</servlet-name>
-        <servlet-class>src.etu1879.framework.servlet.FrontServlet</servlet-class>
+        <servlet-class>etu1879.framework.servlet.FrontServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
         <servlet-name>FrontServlet</servlet-name>
-        <url-pattern>/FrontServlet</url-pattern>
+        <url-pattern>/</url-pattern>
     </servlet-mapping>
     
 </web-app>
