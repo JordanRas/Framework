@@ -1,2 +1,2 @@
-javac -cp servlet-api.jar src/*.java
+javac -cp ../lib/servlet-api.jar -d . *.java
 pause

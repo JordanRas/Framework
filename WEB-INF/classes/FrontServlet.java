@@ -4,7 +4,36 @@ import java.io.*;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 
+import java.util.HashMap;
+import etu1879.framework.Mapping;
+import utilities.Utilitaire;
+import java.util.Vector;
+
 public class FrontServlet extends HttpServlet {
+
+    HashMap<String , Mapping> MappingUrls = new HashMap<String , Mapping>();
+    Vector<Class<?>> classes;
+
+    @Override
+    public void init()throws ServletException{ 
+        super.init();
+        Utilitaire utile = new Utilitaire();
+        this.classes = new Vector<Class<?>>();
+        this.MappingUrls = new HashMap<String,Mapping>();
+
+        String pathToClasses = this.getInitParameter("pathClass");
+        String classesPath = this.getServletContext().getRealPath(pathToClasses);
+
+            try{
+              this.classes = utile.getAllClasses(classesPath + "\\", classesPath, new Vector<Class<?>>());
+              utile.setMappingUrls(this.MappingUrls,this.classes);
+          }catch (Exception e) {
+              //erreur
+          }
+
+
+
+  }
 
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         PrintWriter out = res.getWriter();
