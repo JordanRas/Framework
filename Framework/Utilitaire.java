@@ -57,9 +57,8 @@ public void setMappingUrls(HashMap<String,Mapping> map, Vector<Class<?>> allClas
             for (int i = 0; i < methods.length; i++) {
              if (methods[i].isAnnotationPresent(MethodAnnotation.class)) {
                mapping = new Mapping();
-               mapping.setClassName(class1.getSimpleName());
-               mapping.setMethod(methods[i].getName());
-               // String key =  mapping.getClassName() + "-" + mapping.getMethod();
+               mapping.setClassName(class1.getPackage().getName().toString()+"."+class1.getSimpleName());
+               mapping.setMethod(methods[i].getName());            
                String key = methods[i].getAnnotation(MethodAnnotation.class).chemin();
                map.put(key, mapping);                         
            }    
